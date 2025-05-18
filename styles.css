@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+}
+
+#game-intro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  border: white solid 3px;
+  background-color: black;
+}
+
+#game-intro h1 {
+  margin: 50px;
+  font-family: "Lucida Console", Courier, monospace;
+}
+
+#game-intro img {
+  margin: 50px;
+  width: 30%;
+}
+
+#game-intro p {
+  font-size: 22px;
+  text-align: center;
+  margin: 120px;
+}
+
+#game-intro button {
+  margin: -80px;
+  padding: 5px 5px;
+  color: white;
+  background-color: black;
+}
+
+#game-container {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  background-image: url(/images/ChatGPT\ Image\ 18\ mei\ 2025\,\ 20_55_05.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.sidebar {
+  text-align: center;
+  padding: 20px;
+  color: aliceblue;
+}
+
+#game-screen {
+  display: none;
+}
+
+#game-over {
+  display: none;
+}

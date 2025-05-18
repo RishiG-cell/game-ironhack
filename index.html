@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bartender-game</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <section id="game-intro">
+      <h1>Bartender</h1>
+      <img src="/images/barman.webp" alt="little barman" />
+      <button id="start">Start Game</button>
+      <div></div>
+      <p>Use the left and right arrow to controle the bartender</p>
+    </section>
+
+    <section id="game-container">
+      <div class="sidebar">
+        <h2>Beer-score</h2>
+        <p>Beers: <span id="beers-score">0</span></p>
+        <p>Lives: <span id="lives">3</span></p>
+      </div>
+      <div id="game-screen"></div>
+    </section>
+
+    <section id="game-over">
+      <button>Restart</button>
+    </section>
+    <script src="game.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
