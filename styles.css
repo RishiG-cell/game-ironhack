@@ -4,13 +4,20 @@
   box-sizing: content-box;
 }
 
+body {
+  background-color: black;
+}
+
+audio {
+  display: none;
+}
+
 #game-intro {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   color: white;
-  border: white solid 3px;
   background-color: black;
 }
 
