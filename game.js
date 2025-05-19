@@ -1,7 +1,87 @@
 class Game {
   constructor() {
-    this.start = document.getElementById("game-intro");
-    this.game = document.getElementById("game-screen");
-    this.gameOver = document.getElementById("game-over");
+    this.startScreen = document.getElementById("game-intro");
+    this.gameScreen = document.getElementById("game-screen");
+    this.gameContainer = document.getElementById("game-container");
+    this.gameOverScreen = document.getElementById("game-over");
+    this.livesElement = document.getElementById("lives");
+    this.scoreElm = document.getElementById("beers-score");
+    this.player = new Player(this.gameScreen, 450, 450, 100, 150);
+    this.height = 600;
+    this.width = 500;
+    this.obstacles = [new Obstacle(this.gameScreen, 30, 40)];
+    this.score = 0;
+    this.lives = 3;
+    this.gameIsOver = false;
+    this.gameIntervalId = null;
+    this.gameLoopFrequency = Math.round(1000 / 60);
+    this.counter = 0;
+    this.speedObs = 80;
+  }
+
+  start() {
+    this.gameScreen.style.height = `${this.height}px`;
+    this.gameScreen.style.width = `${this.width}px`;
+    this.startScreen.style.display = "none";
+    this.gameScreen.style.display = "flex";
+    this.gameContainer.style.display = "flex";
+    this.gameIntervalId = setInterval(() => {
+      this.gameLoop();
+    }, this.gameLoopFrequency);
+
+    setInterval(() => {
+      this.gameLoop();
+    }, this.gameLoopFrequency);
+  }
+
+  gameLoop() {
+    this.update();
+    this.counter++;
+    // If "gameIsOver" is set to "true" clear the interval to stop the loop
+    if (this.gameIsOver) {
+      clearInterval(this.gameIntervalId);
+      this.gameOver();
+    }
+  }
+
+  update() {
+    this.player.move();
+
+    if (this.counter % this.speedObs === 0) {
+      this.obstacles.push(new Obstacle(this.gameScreen, 30, 40));
+    }
+
+    for (let i = 0; i < this.obstacles.length; i++) {
+      const currentObstacle = this.obstacles[i];
+      currentObstacle.move();
+
+      if (this.player.didCollide(currentObstacle)) {
+        console.log("mangood");
+        currentObstacle.element.remove();
+        this.obstacles.splice(i, 1);
+        i--;
+        this.lives--;
+        this.livesElement.innerText = this.lives;
+
+        if (this.lives === 0) {
+          this.gameIsOver = true;
+        }
+      }
+
+      if (currentObstacle.top > 450) {
+        console.log("stop");
+        this.score++;
+        this.scoreElm.innerText = this.score;
+        currentObstacle.element.remove();
+        this.obstacles.splice(i, 1);
+        i--;
+      }
+    }
+  }
+  gameOver() {
+    this.gameScreen.style.display = "none";
+    this.gameContainer.style.display = "none";
+    this.gameOverScreen.style.display = "block";
+    audio.pause();
   }
 }
