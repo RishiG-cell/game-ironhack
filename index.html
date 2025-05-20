@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bartender-game</title>
     <link rel="stylesheet" href="styles.css" />
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   </head>
   <body>
     <section id="game-intro">
@@ -34,8 +35,8 @@
     <div id="game-over">
       <div class="sidebar">
         <h2>Orange-score</h2>
-        <p>Oranges : <span id="beers-score">0</span></p>
-        <p>Lives : <span id="lives">3</span></p>
+        <p>Oranges : <span id="beers-end-score">0</span></p>
+        <p>Lives : <span id="lives-end">0</span></p>
       <img
         src="images/cocktails-6946869_640.webp"
         alt="cocktails-6946869_640"
@@ -43,11 +44,12 @@
       <button id="restart-button">Restart</button>
     </div>
 
-    <script src="beer.js"></script>
-    <script src="obstacle.js"></script>
-    <script src="orange.js"></script>
-    <script src="player.js"></script>
-    <script src="game.js"></script>
+    <script src="js/beer.js"></script>
+    <script src="js/obstacle.js"></script>
+    <script src="js/orange.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/game.js"></script>
     <script src="index.js"></script>
+
   </body>
 </html>

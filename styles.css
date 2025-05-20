@@ -59,9 +59,12 @@ audio {
 }
 
 .sidebar h2 {
-  font-family: monospace;
-  font-size: 3em;
   animation: color-change 4s infinite;
+  font-family: "Press Start 2P", cursive;
+  line-height: 1.5;
+  color: #00ff00;
+  background-color: #000;
+  text-shadow: 1px 1px 0 #333;
 }
 @keyframes color-change {
   0% {
@@ -83,11 +86,13 @@ audio {
 
 .sidebar p {
   padding: 10px 30px;
-  color: white;
-  font-weight: bold;
-  font-style: oblique;
   border: 3px solid rgb(13, 214, 236);
   animation: color-change 4s infinite;
+  font-family: "Press Start 2P", cursive;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #000;
+  text-shadow: 1px 1px 0 #333;
 }
 
 #mute img {
@@ -99,7 +104,7 @@ audio {
   display: none;
   width: 100%;
   height: 100vh;
-  background-image: url(/game-ironhack/images/ChatGPT\ Image\ 18\ mei\ 2025\,\ 20_55_05.png);
+  background-image: url(/game-ironhack/images/n.gif);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -117,11 +122,30 @@ audio {
   font-family: monospace;
   font-size: 20px;
   padding: 5px 30px;
-  background-color: red;
-  color: white;
+  background-color: rgb(246, 255, 0);
+  animation: color-change 4s infinite;
 }
 
 #game-over img {
   width: 800px;
-  animation: color-change 4s infinite;
+  animation-name: bounceIn;
+  animation-duration: 2s;
+  animation-delay: 0.5s;
+}
+
+@keyframes bounceIn {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  40% {
+    transform: translateY(-50px);
+  }
+  60% {
+    transform: translateY(-55px);
+  }
 }
