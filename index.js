@@ -3,6 +3,7 @@ const startBttn = document.querySelector("#start");
 const gameScreen = document.querySelector("#game-screen");
 const audio = document.querySelector("#audio");
 const muteBtn = document.querySelector("#mute");
+const restartBtn = document.querySelector("#restart-button");
 let game;
 
 function startGame() {
@@ -17,6 +18,12 @@ startBttn.addEventListener("click", () => {
   startGame();
 });
 
+restartBtn.addEventListener("click", () => {
+  console.log("beep");
+  // window.location.reload;
+  startGame();
+});
+
 muteBtn.addEventListener("click", () => {
   audio.pause();
 });
@@ -26,16 +33,16 @@ muteBtn.addEventListener("dblclick", () => {
 
 window.addEventListener("keydown", (event) => {
   if (event.code === "ArrowLeft") {
-    game1.player.directionX = -2;
+    game1.player.directionX = -8;
   }
   if (event.code === "ArrowRight") {
-    game1.player.directionX = 2;
+    game1.player.directionX = 8;
   }
   if (event.code === "ArrowUp") {
-    game1.player.directionY = -2;
+    game1.player.directionY = -8;
   }
   if (event.code === "ArrowDown") {
-    game1.player.directionY = 2;
+    game1.player.directionY = 8;
   }
   if (event.code === "Space") {
     const playerLeft = game1.player.left;

@@ -6,10 +6,11 @@ class Game {
     this.gameOverScreen = document.getElementById("game-over");
     this.livesElement = document.getElementById("lives");
     this.scoreElm = document.getElementById("beers-score");
-    this.player = new Player(this.gameScreen, 450, 450, 100, 150);
-    this.height = 600;
-    this.width = 500;
+    this.player = new Player(this.gameScreen, 750, 750, 100, 150);
+    this.height = 800;
+    this.width = 1000;
     this.obstacles = [new Obstacle(this.gameScreen, 30, 40)];
+    this.orange = [new Orange(this.gameScreen, 50, 40)];
     this.score = 0;
     this.lives = 3;
     this.gameIsOver = false;
@@ -20,16 +21,16 @@ class Game {
   }
 
   start() {
+    this.livesElement.innerText = this.lives;
+    this.scoreElm.innerText = this.score;
+    this.gameOverScreen.style.display = "none";
     this.gameScreen.style.height = `${this.height}px`;
     this.gameScreen.style.width = `${this.width}px`;
     this.startScreen.style.display = "none";
     this.gameScreen.style.display = "flex";
     this.gameContainer.style.display = "flex";
-    this.gameIntervalId = setInterval(() => {
-      this.gameLoop();
-    }, this.gameLoopFrequency);
 
-    setInterval(() => {
+    this.gameIntervalId = setInterval(() => {
       this.gameLoop();
     }, this.gameLoopFrequency);
   }
@@ -68,17 +69,53 @@ class Game {
         }
       }
 
-      if (currentObstacle.top > 450) {
+      if (currentObstacle.top > 800) {
         console.log("stop");
-        this.score++;
+
         this.scoreElm.innerText = this.score;
         currentObstacle.element.remove();
         this.obstacles.splice(i, 1);
         i--;
       }
     }
+    if (this.counter % this.speedObs === 0) {
+      this.orange.push(new Orange(this.gameScreen, 50, 40));
+    }
+
+    for (let i = 0; i < this.orange.length; i++) {
+      const currentObstacle = this.orange[i];
+      currentObstacle.move();
+
+      if (this.player.didCollide(currentObstacle)) {
+        console.log("juiced");
+        currentObstacle.element.remove();
+        this.orange.splice(i, 1);
+        i++;
+        this.score++;
+        this.scoreElm.innerText = this.score;
+
+        if (this.lives === 0) {
+          this.gameIsOver = true;
+        }
+      }
+
+      if (currentObstacle.top > 800) {
+        console.log("stop");
+        this.scoreElm.innerText = this.score;
+        currentObstacle.element.remove();
+        this.orange.splice(i, 1);
+        i--;
+      }
+    }
   }
   gameOver() {
+    this.player.element.remove();
+    this.obstacles.forEach((oneObstacle) => {
+      oneObstacle.element.remove();
+    });
+    this.orange.forEach((oneObstacle) => {
+      oneObstacle.element.remove();
+    });
     this.gameScreen.style.display = "none";
     this.gameContainer.style.display = "none";
     this.gameOverScreen.style.display = "block";

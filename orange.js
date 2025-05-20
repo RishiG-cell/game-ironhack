@@ -1,4 +1,4 @@
-class Obstacle {
+class Orange {
   constructor(gameScreen, width, height) {
     this.gameScreen = gameScreen;
     this.possibleXValues = [
@@ -12,7 +12,7 @@ class Obstacle {
     this.width = width;
     this.height = height;
     this.element = document.createElement("img");
-    this.element.src = "images/mango.webp";
+    this.element.src = "/game-ironhack/images/orange.webp";
     this.element.style.width = `${this.width}px`;
     this.element.style.height = `${this.height}px`;
     this.element.style.top = `${this.top}px`;

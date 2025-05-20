@@ -25,14 +25,14 @@ class Player {
     if (this.left < 100) {
       this.left = 100;
     }
-    if (this.left + this.width > 700) {
-      this.left = 700 - this.width;
+    if (this.left + this.width > 1200) {
+      this.left = 1200 - this.width;
     }
     if (this.top < 0) {
       this.top = 0;
     }
-    if (this.top + this.height > 600) {
-      this.top = 600 - this.height;
+    if (this.top + this.height > 800) {
+      this.top = 800 - this.height;
     }
     this.updatePosition();
   }

@@ -9,7 +9,7 @@
   <body>
     <section id="game-intro">
       <h1>Bartender</h1>
-      <img src="/images/barman.webp" alt="little barman" />
+      <img src="/game-ironhack/images/barman.webp" alt="little barman" />
       <button id="start">Start Game</button>
       <div></div>
       <p>Use the left and right arrow to controle the bartender</p>
@@ -21,20 +21,31 @@
         src="audio/Adam Port - Move (Da Phonk x Santo Bouyon Edit) [ADE EXCLUSIVE].mp3"
       ></audio>
       <div class="sidebar">
-        <h2>Beer-score</h2>
-        <p>Beers: <span id="beers-score">0</span></p>
-        <p>Lives: <span id="lives">3</span></p>
-        <button id="mute"><img src="/images/off-1292831_1280.png" /></button>
+        <h2>Orange-score</h2>
+        <p>Oranges : <span id="beers-score">0</span></p>
+        <p>Lives : <span id="lives">3</span></p>
+        <button id="mute">
+          <img src="/game-ironhack/images/off-1292831_1280.png" />
+        </button>
       </div>
       <div id="game-screen"></div>
     </section>
 
     <div id="game-over">
-      <button>Restart</button>
+      <div class="sidebar">
+        <h2>Orange-score</h2>
+        <p>Oranges : <span id="beers-score">0</span></p>
+        <p>Lives : <span id="lives">3</span></p>
+      <img
+        src="images/cocktails-6946869_640.webp"
+        alt="cocktails-6946869_640"
+      />
+      <button id="restart-button">Restart</button>
     </div>
 
     <script src="beer.js"></script>
     <script src="obstacle.js"></script>
+    <script src="orange.js"></script>
     <script src="player.js"></script>
     <script src="game.js"></script>
     <script src="index.js"></script>
