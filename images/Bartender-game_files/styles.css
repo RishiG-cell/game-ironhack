@@ -39,14 +39,9 @@ audio {
 
 #game-intro button {
   margin: -80px;
-  padding: 5px 15px;
+  padding: 5px 5px;
   color: white;
   background-color: black;
-}
-
-#game-intro button:hover {
-  background-color: rgba(97, 252, 0, 0.302);
-  transition: 0.5s;
 }
 
 #game-container {
@@ -130,14 +125,12 @@ audio {
   background-color: rgb(246, 255, 0);
   animation: color-change 4s infinite;
 }
-#restart-button:hover {
-  background-color: rgba(255, 34, 0, 0.574);
-}
 
 #game-over img {
   width: 800px;
   animation-name: bounceIn;
-  animation-duration: 5s;
+  animation-duration: 2s;
+  animation-delay: 0.5s;
 }
 
 @keyframes bounceIn {
@@ -154,19 +147,5 @@ audio {
   }
   60% {
     transform: translateY(-55px);
-  }
-}
-
-.spin {
-  animation: rotation3d 1s linear infinite;
-  transform-style: preserve-3d;
-}
-
-@keyframes rotation3d {
-  from {
-    transform: rotateY(0deg);
-  }
-  to {
-    transform: rotateY(360deg);
   }
 }

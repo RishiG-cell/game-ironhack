@@ -19,7 +19,7 @@ class Game {
     this.gameIntervalId = null;
     this.gameLoopFrequency = Math.round(1000 / 60);
     this.counter = 0;
-    this.amountObs = 100;
+    this.speedObs = 80;
   }
 
   start() {
@@ -50,7 +50,7 @@ class Game {
   update() {
     this.player.move();
 
-    if (this.counter % this.amountObs === 0) {
+    if (this.counter % this.speedObs === 0) {
       this.obstacles.push(new Obstacle(this.gameScreen, 30, 40));
     }
 
@@ -77,22 +77,20 @@ class Game {
         i--;
         this.lives--;
         this.livesElement.innerText = this.lives;
-        this.player.element.classList.add("spin");
-        setTimeout(() => {
-          this.player.element.classList.remove("spin");
-        }, 1000);
+
         if (this.lives === 0) {
           this.gameIsOver = true;
         }
       }
 
       if (currentObstacle.top > 800) {
+        this.scoreElm.innerText = this.score;
         currentObstacle.element.remove();
         this.obstacles.splice(i, 1);
         i--;
       }
     }
-    if (this.counter % this.amountObs === 0) {
+    if (this.counter % this.speedObs === 0) {
       this.orange.push(new Orange(this.gameScreen, 50, 40));
     }
 
@@ -107,15 +105,14 @@ class Game {
         i++;
         this.score++;
         this.scoreElm.innerText = this.score;
-        if (this.score % 2 === 0) {
-          this.amountObs = this.amountObs - 5;
-        }
+
         if (this.lives === 0) {
           this.gameIsOver = true;
         }
       }
 
       if (currentObstacle.top > 800) {
+        this.scoreElm.innerText = this.score;
         currentObstacle.element.remove();
         this.orange.splice(i, 1);
         i--;

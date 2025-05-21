@@ -1,10 +1,11 @@
-class Obstacle {
+class Orange {
   constructor(gameScreen, width, height) {
     this.gameScreen = gameScreen;
     this.possibleXValues = [
-      120, 400, 488, 850, 750, 950, 500, 600, 1100, 1150, 700, 150, 180, 980,
-      200, 240, 270, 300, 400, 488, 500, 600, 700, 800, 900, 1000, 1100, 220,
-      1150,
+      125, 420, 440, 859, 72, 920, 540, 634, 1154, 1140, 760, 120, 180, 980,
+      200, 240, 270, 300, 420, 440, 509, 62, 720, 840, 934, 1154, 1140, 760, 12,
+      120, 420, 440, 859, 72, 920, 540, 634, 1154, 1140, 760, 120, 180, 980,
+      200, 240, 270, 300, 420, 440, 509, 62, 720, 840, 934, 1154, 1140, 760, 12,
     ];
     this.index = Math.floor(Math.random() * this.possibleXValues.length);
     this.left = this.possibleXValues[this.index];
@@ -12,18 +13,17 @@ class Obstacle {
     this.width = width;
     this.height = height;
     this.element = document.createElement("img");
-    this.element.src = "images/mango.webp";
+    this.element.src = "/game-ironhack/images/orange.webp";
     this.element.style.width = `${this.width}px`;
     this.element.style.height = `${this.height}px`;
     this.element.style.top = `${this.top}px`;
     this.element.style.left = `${this.left}px`;
     this.element.style.position = "absolute";
     this.gameScreen.appendChild(this.element);
-    this.speed = 6;
   }
 
   move() {
-    this.top = this.top + this.speed;
+    this.top = this.top + 6;
     this.updatePosition();
   }
 

@@ -19,11 +19,10 @@ class Obstacle {
     this.element.style.left = `${this.left}px`;
     this.element.style.position = "absolute";
     this.gameScreen.appendChild(this.element);
-    this.speed = 6;
   }
 
   move() {
-    this.top = this.top + this.speed;
+    this.top = this.top + 6;
     this.updatePosition();
   }
 
