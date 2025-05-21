@@ -19,7 +19,7 @@ class Game {
     this.gameIntervalId = null;
     this.gameLoopFrequency = Math.round(1000 / 60);
     this.counter = 0;
-    this.amountObs = 100;
+    this.amountObs = 80;
   }
 
   start() {

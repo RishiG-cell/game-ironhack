@@ -13,7 +13,7 @@ class Orange {
     this.width = width;
     this.height = height;
     this.element = document.createElement("img");
-    this.element.src = "/game-ironhack/images/orange.webp";
+    this.element.src = "images/orange.webp";
     this.element.style.width = `${this.width}px`;
     this.element.style.height = `${this.height}px`;
     this.element.style.top = `${this.top}px`;

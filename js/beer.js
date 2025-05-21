@@ -6,7 +6,7 @@ class BeerBullet {
     this.width = 50;
     this.height = 50;
     this.element = document.createElement("img");
-    this.element.src = "/game-ironhack/images/beer.webp";
+    this.element.src = "images/beer.webp";
     this.element.style.width = `${this.width}px`;
     this.element.style.height = `${this.height}px`;
     this.element.style.top = `${this.top}px`;
