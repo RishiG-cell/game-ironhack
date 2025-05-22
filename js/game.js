@@ -13,6 +13,7 @@ class Game {
     this.width = 1000;
     this.obstacles = [new Obstacle(this.gameScreen, 30, 40)];
     this.orange = [new Orange(this.gameScreen, 50, 40)];
+    this.venomObj = [];
     this.score = 0;
     this.lives = 3;
     this.gameIsOver = false;
@@ -106,6 +107,9 @@ class Game {
         this.orange.splice(i, 1);
         i++;
         this.score++;
+        if (this.score % 10 === 0 && this.score !== 0) {
+          this.venomObj.push(new Venom(this.gameScreen, 40, 70));
+        }
         this.scoreElm.innerText = this.score;
         if (this.score % 2 === 0) {
           this.amountObs = this.amountObs - 5;
@@ -121,6 +125,45 @@ class Game {
         i--;
       }
     }
+
+    for (let i = 0; i < this.venomObj.length; i++) {
+      const currentObstacle = this.venomObj[i];
+      currentObstacle.move();
+      for (let j = 0; j < this.player.beer.length; j++) {
+        const currBeer = this.player.beer[j];
+        currBeer.move();
+        if (currBeer.didCollide(currentObstacle)) {
+          currentObstacle.element.remove();
+          currBeer.element.remove();
+          this.venomObj.splice(i, 1);
+          i--;
+          this.player.beer.splice(j, 1);
+          j--;
+        }
+      }
+
+      if (this.player.didCollide(currentObstacle)) {
+        console.log("venomed");
+        currentObstacle.element.remove();
+        this.venomObj.splice(i, 1);
+        i--;
+        this.lives--;
+        this.livesElement.innerText = this.lives;
+        this.player.element.classList.add("spin");
+        setTimeout(() => {
+          this.player.element.classList.remove("spin");
+        }, 1000);
+        if (this.lives === 0) {
+          this.gameIsOver = true;
+        }
+      }
+
+      if (currentObstacle.top > 800) {
+        currentObstacle.element.remove();
+        this.venomObj.splice(i, 1);
+        i--;
+      }
+    }
   }
   gameOver() {
     this.player.element.remove();
@@ -133,6 +176,10 @@ class Game {
     this.player.beer.forEach((oneObstacle) => {
       oneObstacle.element.remove();
     });
+    this.venomObj.forEach((oneObstacle) => {
+      oneObstacle.element.remove();
+    });
+
     this.gameScreen.style.display = "none";
     this.gameContainer.style.display = "none";
     this.gameOverScreen.style.display = "block";

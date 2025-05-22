@@ -23,18 +23,60 @@ audio {
 
 #game-intro h1 {
   margin: 50px;
-  font-family: "Lucida Console", Courier, monospace;
+  font-size: 34px;
+  font-family: "Press Start 2P", cursive;
+  animation-duration: 3s;
+  animation-name: grow-shrink;
+}
+@keyframes slide-in1 {
+  from {
+    translate: -150vw 0;
+    scale: 200% 1;
+  }
+
+  to {
+    translate: 0 0;
+    scale: 100% 1;
+  }
+}
+@keyframes slide-in2 {
+  from {
+    translate: 150vw 0;
+    scale: 200% 1;
+  }
+
+  to {
+    translate: 0 0;
+    scale: 100% 1;
+  }
+}
+
+@keyframes grow-shrink {
+  25%,
+  75% {
+    scale: 100%;
+  }
+
+  50% {
+    scale: 200%;
+    color: rgb(242, 255, 0);
+  }
 }
 
 #game-intro img {
   margin: 50px;
   width: 30%;
+  animation-name: slide-in1;
+  animation-duration: 3s;
 }
 
 #game-intro p {
-  font-size: 22px;
+  font-size: 15px;
   text-align: center;
   margin: 120px;
+  font-family: "Press Start 2P", cursive;
+  animation-name: slide-in2;
+  animation-duration: 3s;
 }
 
 #game-intro button {
@@ -42,6 +84,9 @@ audio {
   padding: 5px 15px;
   color: white;
   background-color: black;
+  font-family: "Press Start 2P", cursive;
+  animation-name: slide-in1;
+  animation-duration: 3s;
 }
 
 #game-intro button:hover {
@@ -138,6 +183,10 @@ audio {
   width: 800px;
   animation-name: bounceIn;
   animation-duration: 5s;
+}
+
+#end {
+  color: white;
 }
 
 @keyframes bounceIn {
