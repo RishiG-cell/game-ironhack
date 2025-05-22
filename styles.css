@@ -144,6 +144,9 @@ audio {
   background-color: #000;
   text-shadow: 1px 1px 0 #333;
 }
+.imageside {
+  width: 60px;
+}
 
 #mute img {
   width: 30px;
